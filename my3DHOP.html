@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta content="charset=UTF-8"/>
+<title>3DHOP - 3D Heritage Online Presenter</title>
+<!--STYLESHEET-->
+<link type="text/css" rel="stylesheet" href="CSS.css"/>  
+<!--SPIDERGL-->
+<script type="text/javascript" src="js/spidergl.js"></script>
+<!--JQUERY-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--PRESENTER-->
+<script type="text/javascript" src="js/presenter.js"></script>
+<!--3D MODELS LOADING AND RENDERING-->
+<script type="text/javascript" src="js/nexus.js"></script>
+<script type="text/javascript" src="js/ply.js"></script>
+<!--TRACKBALLS-->
+<script type="text/javascript" src="js/trackball_turntable.js"></script>
+<script type="text/javascript" src="js/trackball_turntable_pan.js"></script>
+<script type="text/javascript" src="js/trackball_pantilt.js"></script>
+<script type="text/javascript" src="js/trackball_sphere.js"></script>
+<!--UTILITY-->
+<script type="text/javascript" src="js/init.js"></script>
+</head>
+<body>
+
+
+<div id="3dhop" class="tdhop"><div id="tdhlg"></div>
+ <div id="toolbar">
+  <img id="home"     title="Home"                  src="skins/transparent_light/home.png"            /><br/>
+  <img id="zoomin"   title="Zoom In"               src="skins/transparent_light/zoomin.png"          /><br/>
+  <img id="zoomout"  title="Zoom Out"              src="skins/transparent_light/zoomout.png"         /><br/>
+  <img id="measure_on" title="Disable Measure Control" src="skins/transparent_light/measure_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="measure"    title="Enable Measure Control"  src="skins/transparent_light/measure.png"    /><br/>
+  <img id="screenshot" title="Save Screenshot"   src="skins/transparent_light/screenshot.png"/><br/>
+  <img id="full_on"  title="Exit Full Screen"      src="skins/transparent_light/full_on.png"         style="position:absolute; visibility:hidden;"/>
+  <img id="full"     title="Full Screen"           src="skins/transparent_light/full.png"/> <br>
+ </div>
+ <canvas id="draw-canvas" style="background-image: url(skins/backgrounds/sfondo.jpg)"/>
+</div>
+
+<div id="measure-box" class="output-box"> Measured length<hr/><span id="measure-output" class="output-text" onmousedown="event.stopPropagation()">0.0</span>   
+</div>
+
+</body>
+
+<script type="text/javascript">
+var presenter = null;
+
+function setup3dhop() { 
+	presenter = new Presenter("draw-canvas");
+	
+	presenter.setScene({
+		meshes: {
+			"mesh_1" : { url: "Busto2.nxz"}
+		},
+		modelInstances : {
+			"model_1" : { mesh : "mesh_1" }
+		},
+		trackball: { 
+			type : TurntablePanTrackball,
+			trackOptions : {
+				startPhi: -24.13,
+				startTheta: -5.0,
+				startDistance: 3.0,
+				minMaxPhi: [-100, 120],
+				minMaxTheta: [-30.0, 70.0],
+				minMaxDist: [0.5, 3.0]
+			}
+			
+		}
+		
+	});
+	presenter._onEndMeasurement = onEndMeasure;
+}
+
+
+
+function actionsToolbar(action) {
+	if(action=='home') presenter.animateToTrackballPosition([-24.13, -5, 0, 0, 0, 3]); 
+	else if(action=='zoomin') presenter.zoomIn();
+	else if(action=='zoomout') presenter.zoomOut(); 
+	else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); } 
+	else if(action=='measure' || action=='measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); } 
+	else if(action=='screenshot') presenter.saveScreenshot();
+	else if(action=='full'  || action=='full_on') fullscreenSwitch();
+
+}
+
+function onEndMeasure(measure) {
+  $('#measure-output').html(measure.toFixed(2) + " mm");
+}
+
+
+
+$(document).ready(function(){
+	init3dhop();
+
+	setup3dhop();
+});
+</script>
+</html>

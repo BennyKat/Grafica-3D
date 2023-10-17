@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="cssContent.css">
+    <script src=""></script>
+    <title>Grafica 3D</title>
+</head>
+<body>
+
+
+
+
+
+
+    <div class="main">
+
+      <div class="topnav" >
+
+        <a href="Index.html" >home</a>
+        <a href="#news" class="active">modello 3D</a>
+    
+      </div>
+<header></header>
+
+            <p style="padding:20px; text-align: center;"> 
+            Protagonista del mio studio è stata una delle  <b>teste-ritratto</b> rinvenute nel 1968 in un pozzo del teatro appartenenti <br> all'età giulio-claudia (41-54 d.C). Si pensa che il soggetto rappresentato fosse uno dei magistrati della colonia.
+             <br>    <br>
+            Le fotografie sono state scattate con una 
+            <b>Nikon D3300 - f/18 mm - sensore: 23,55 mm </b><br>
+             Un primo modello è stato elaborato tramite Regard3D, il secondo, e definitivo, con Metashape:
+          </p> 
+
+          <div class="section">
+          <h3>fasi di sviluppo</h3>
+          </div>
+<br><br>
+          <fieldset>
+            <legend>regard 3D</legend>
+          <div class="col-s-6">
+            <ul style="list-style-type:square">
+              <li>Ho importato le fotografie all'interno del programma e ho eseguito il <i>match</i> delle stesse. </li> 
+              <li>Dopo cinque minuti di elaborazione, ho effettuato la triangolazione: sono state calibrate 81/81 immagini e rilevati 17813 punti  </li> 
+              <li>Ho concluso l'elaborazione creando una nuvola densa (valore 1) che ho esportato in formato PLY e pulito con Metashape.</li>   <br>
+            Il modello finale, pulito dagli "scarti", presentava un forte dislivello qualitativo tra il fronte e il retro del capo. Le cause sono state le seguenti:      
+                <ol>
+                    <br>
+                  <li>L’illuminazione artificiale </li> 
+                  <li>La scena retrostante il busto </li> 
+                  <li>L’impossibilità di ruotarlo e/o spostarlo dal suo punto d’origine </li>
+                </ol>
+             </ul>
+          </div>
+          <div class="col-s-6">
+            <img src="ScreenShot/regard3D00.png" alt="regard 3D" style="padding: 30px;">
+          </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>metashape</legend>
+          <div class="col-s-6">
+        <br>
+            <ul style="list-style-type:square">
+              <li>Ho trasportato le fotografie all'interno del programma ed eseguito l'allineamento delle foto. </li> 
+              <li>Dopo le fasi di <i>matching</i>, calibrazione ed orientamento sono stati rilevati 55,423 punti</li> 
+              <li>Ho costruito una nuvola densa impostata su "MEDIO"</li> 
+              <li>Ho costruito la <i>mesh</i> definendo 2.000.000 di triangoli</li>
+              <li>Ho costruito una <b>texture</b> per attenuare il problema del cranio</li>  <br>
+            Le differenze sono state subito evidenti in quanto, già solo nella prima fase di allineamento, il modello appariva:      
+                <ol>
+                    <br>
+                  <li>Più pulito </li> 
+                  <li>Più dettagliato e nitido </li> 
+                </ol>
+             </ul>
+          </div>
+          <div class="col-s-6">
+            <img src="ScreenShot/metashape3.JPG" alt="regard 3D" style="padding: 30px;">
+          </div>
+        </fieldset>
+        <fieldset>
+            <legend>confronto modelli definitivi</legend>
+      
+            <div class="col-">
+              <div class="col-s-2"> 
+                <h2 style="margin-top: 50%">senza <br> texture</h2>
+                 </div>
+              <div class="col-s-5"> 
+                <img src="ScreenShot/testaRossa00.png" >
+          </div>
+            <div class="col-s-5"> 
+            <img src="ScreenShot/MezzoBustoFronte00.png">
+           </div>
+            </div>
+      
+            
+            <div class="col-">
+              <div class="col-s-2"> 
+                <h2 style="margin-top: 50%">con <br> texture</h2>
+                 </div>
+              <div class="col-s-5"> 
+                <img src="ScreenShot/busto201.png" >
+          </div>
+            <div class="col-s-5"> 
+              <img src="ScreenShot/BustoFronte02.png" >
+           </div>
+            </div>
+          </fieldset>
+
+          <fieldset style="border:none;">
+            <legend>Modello 3D</legend>
+          <iframe src="file:///F:/Benny/Grafica%203D/Progetto/Nuova%20cartella/minimal/my3DHOP.html" ></iframe>
+        </fieldset>
+          
+  <div class="col-12">
+    <footer>
+     <p><i>Created by Benedetta Catricalà</i> <br> <br>
+     Digital Humanities · Pisa University · Italy</p> <br>
+    </footer>
+   </div>
+    </div>
+
+</body>

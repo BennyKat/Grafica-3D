@@ -1,0 +1,1 @@
+Modello 3D di un mezzo busto
